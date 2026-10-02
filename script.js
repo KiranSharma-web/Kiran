@@ -191,8 +191,13 @@ document.querySelectorAll(".filter").forEach((btn) =>
   }),
 );
 const modal = document.querySelector(".modal"),
+  modalEyebrow = document.querySelector("#modal-eyebrow"),
   modalTitle = document.querySelector("#modal-title"),
-  modalContent = document.querySelector(".modal-content");
+  modalOverview = document.querySelector("#modal-overview"),
+  modalQuestion = document.querySelector("#modal-question"),
+  modalAreas = document.querySelector("#modal-areas"),
+  modalApproach = document.querySelector("#modal-approach"),
+  modalOutput = document.querySelector("#modal-output");
 let modalTrigger = null;
 const closeModal = () => {
   modal.classList.remove("open");
@@ -204,8 +209,19 @@ const closeModal = () => {
 document.querySelectorAll(".project-card").forEach((card) =>
   card.addEventListener("click", () => {
     modalTrigger = card;
+    modalEyebrow.textContent = card.dataset.eyebrow;
     modalTitle.textContent = card.dataset.title;
-    modalContent.textContent = card.dataset.detail;
+    modalOverview.textContent = card.dataset.overview;
+    modalQuestion.textContent = card.dataset.question;
+    modalAreas.replaceChildren(
+      ...card.dataset.areas.split("|").map((area) => {
+        const item = document.createElement("li");
+        item.textContent = area;
+        return item;
+      }),
+    );
+    modalApproach.textContent = card.dataset.approach;
+    modalOutput.textContent = card.dataset.output;
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
