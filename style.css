@@ -829,7 +829,7 @@ h2 em,
   border-radius: 2px;
   padding: 12px 14px;
   font-size: 11px;
-  cursor: pointer;
+  cursor: default;
   transition:
     transform 0.2s,
     border-color 0.2s,
@@ -2131,7 +2131,6 @@ footer {
 .menu-toggle:focus-visible,
 .stage:focus-visible,
 .skill-tab:focus-visible,
-.skill-chip:focus-visible,
 .filter:focus-visible,
 .modal button:focus-visible {
   outline: 2px solid #8fa482;
@@ -2353,12 +2352,21 @@ footer {
   color: #aeb9ab;
   font-weight: 700;
 }
-.contact-details strong {
+.contact-details strong,
+.contact-details a {
   font-size: 11px;
   line-height: 1.5;
   color: #f1f1eb;
   font-weight: 500;
   overflow-wrap: anywhere;
+}
+.contact-details a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.contact-details a:focus-visible {
+  outline: 2px solid #8fa482;
+  outline-offset: 3px;
 }
 .contact-foot {
   margin-top: 36px;
@@ -2522,4 +2530,44 @@ footer {
   .education-transition > div > span {
     font-size: 7px;
   }
+}
+
+/* HR case study refinement: retain the portfolio's muted editorial palette. */
+.project-status {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 9px;
+  border: 1px solid #ffffffa8;
+  border-radius: 2px;
+  background: #fffaf0d9;
+  color: #596357;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1;
+}
+.project-card:focus-visible .project-visual {
+  outline: 2px solid #74866f;
+  outline-offset: 3px;
+}
+.project-card > strong {
+  margin-top: 8px;
+}
+.project-desc {
+  max-width: 48ch;
+  line-height: 1.6;
+}
+.modal-status span {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 5px 7px;
+  border: 1px solid #d6d9cf;
+  color: #667260;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
 }
