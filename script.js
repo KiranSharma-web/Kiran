@@ -3,10 +3,6 @@ const portfolioData = {
     email: "sharma.kiran.tech@gmail.com",
     linkedin: "linkedin.com/in/sharmaakiran",
     linkedinUrl: "https://www.linkedin.com/in/sharmaakiran",
-    phone: "+91 83 686 22297",
-  },
-  resume: {
-    path: "public/assets/Kiran-Sharma-Resume.pdf",
   },
 };
 
@@ -22,21 +18,6 @@ linkedinLink.href = portfolioData.contact.linkedinUrl;
 linkedinLink.target = "_blank";
 linkedinLink.rel = "noopener noreferrer";
 
-document.querySelector("[data-contact-phone]").textContent =
-  portfolioData.contact.phone;
-
-const resumeButton = document.querySelector("[data-resume-button]");
-if (portfolioData.resume.path) {
-  resumeButton.disabled = false;
-  resumeButton.textContent = "Download Resume";
-  resumeButton.addEventListener("click", () => {
-    window.open(
-      new URL(portfolioData.resume.path, document.baseURI).href,
-      "_blank",
-      "noopener,noreferrer",
-    );
-  });
-}
 const stages = [
   {
     title: "Source candidates.",
