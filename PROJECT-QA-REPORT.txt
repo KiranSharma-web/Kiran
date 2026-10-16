@@ -1,0 +1,57 @@
+KIRAN SHARMA — THREE HR PROJECTS QA REPORT
+===========================================
+
+Build and portfolio integration
+-------------------------------
+- Static site build succeeds with GitHub Pages base path /Kiran/.
+- JavaScript syntax check passes.
+- HTML parser check passes; no duplicate IDs found.
+- Four project cards are present; three are marked WORK SAMPLE READY.
+- Three completed project cards expose relevant downloadable files and preview resources from the portfolio details.
+- Added PDF previews for both Excel workbooks so visitors can inspect them without spreadsheet software.
+- Added first-page PNG previews for all three completed work samples and surfaced them in the project detail modal.
+- Project resource links distinguish preview/open links (new tab) from downloadable files.
+- Corrected card status labels: the three completed work samples are marked ready; Workforce Intelligence Dashboard remains in development.
+- Source assets and generated output assets are rebuilt from the same source tree.
+
+Deliverable QA
+--------------
+1. Recruitment Funnel Analysis (Excel)
+   - Dashboard, Funnel Data, Insights & Method, and Data Dictionary sheets.
+   - Formula-driven stage drop-off, stage conversion, cumulative conversion, and summary KPIs.
+   - Synthetic data: 240 applications, 180 resume screens passed, 110 recruiter screens passed,
+     70 hiring-manager interview passes, 32 final interviews completed, 18 offers, 14 acceptances.
+   - Dashboard chart and definitions/limitations are included.
+   - Workbook opens through LibreOffice headless conversion; print layout configured to one page
+     per sheet and visually inspected. Exported PDF preview: 4 pages, linked from the portfolio card.
+
+2. Employee Onboarding Experience (Excel)
+   - 30-Day Journey, Document Checklist, Check-in Tracker, and Guide & Measures sheets.
+   - Status/priority dropdowns, filters where appropriate, role ownership, privacy guidance,
+     and practical onboarding checkpoints are included.
+   - Title merges and print layouts were corrected; workbook opens through LibreOffice headless
+     conversion and the first page was visually inspected. Exported PDF preview: 4 pages, linked from the portfolio card.
+   - It is a blank template; adapt to organisation policy and applicable law.
+
+3. Candidate Experience Journey (Word and PDF)
+   - Editable report and shareable PDF with journey stages, touchpoint ownership, sample
+     candidate communications, proposed measures, recommendations, and validation guidance.
+   - PDF regenerated from the editable Word document for consistent deliverables.
+   - It is a self-initiated design exercise, not a report of measured candidate feedback.
+
+Truthfulness and scope
+----------------------
+- All three are self-initiated portfolio work samples, not employer implementations.
+- Recruitment counts are synthetic; no actual candidate/employee personal data is used.
+- Onboarding is a generic template; candidate pain points are hypotheses to validate.
+- No measured business impact or unsupported performance metrics are claimed.
+- Workforce Intelligence Dashboard remains in development and is not represented as complete.
+
+Remaining verification boundary
+-------------------------------
+- Browser navigation in this environment was blocked (ERR_BLOCKED_BY_ADMINISTRATOR). Therefore
+  interactive modal behavior, real download clicks, keyboard focus, and responsive behavior have
+  not been certified in a live browser. The preview markup and resource-link behavior passed static
+  source/path checks only.
+- Visual checks used LibreOffice PDF exports; Excel/Google Sheets rendering may differ slightly.
+- The portfolio has not been deployed from this environment.

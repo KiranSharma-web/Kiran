@@ -54,14 +54,14 @@ const stages = [
   },
   {
     title: "Shortlist candidates.",
-    body: "Shortlist suitable candidates for the next stage.",
+    body: "Compare candidate profiles with stated role criteria as part of a typical recruitment workflow.",
     chips: ["Candidate shortlisting", "Role requirements"],
     icon: "⌕",
     foot: "CANDIDATE SHORTLISTING",
   },
   {
     title: "Coordinate interviews.",
-    body: "Schedule interviews and coordinate between candidates and hiring managers.",
+    body: "Coordinate interview times and share relevant details with candidates and interviewers.",
     chips: ["Interview scheduling", "Hiring manager coordination"],
     icon: "↗",
     foot: "INTERVIEW COORDINATION",
@@ -75,8 +75,8 @@ const stages = [
   },
   {
     title: "Support HR operations.",
-    body: "Maintain HR records and reports, support employee queries and engagement activities, and assist payroll and statutory compliance processes while handling confidential documentation.",
-    chips: ["HR records & reporting", "Employee support", "Compliance support"],
+    body: "Typical HR operations can include maintaining records and reports, supporting employee queries, assisting with payroll activities and handling documentation carefully.",
+    chips: ["HR records & reporting", "Employee support", "Payroll support"],
     icon: "◎",
     foot: "PEOPLE & HR OPERATIONS",
   },
@@ -197,7 +197,14 @@ const modal = document.querySelector(".modal"),
   modalQuestion = document.querySelector("#modal-question"),
   modalAreas = document.querySelector("#modal-areas"),
   modalApproach = document.querySelector("#modal-approach"),
-  modalOutput = document.querySelector("#modal-output");
+  modalOutput = document.querySelector("#modal-output"),
+  modalDeliverables = document.querySelector("#modal-deliverables"),
+  modalTools = document.querySelector("#modal-tools"),
+  modalChecklist = document.querySelector("#modal-checklist"),
+  modalResources = document.querySelector("#modal-resources"),
+  modalStatus = document.querySelector("#modal-status-value"),
+  modalPreviewWrap = document.querySelector("#modal-preview-wrap"),
+  modalPreviewImage = document.querySelector("#modal-preview-image");
 let modalTrigger = null;
 const closeModal = () => {
   modal.classList.remove("open");
@@ -222,6 +229,46 @@ document.querySelectorAll(".project-card").forEach((card) =>
     );
     modalApproach.textContent = card.dataset.approach;
     modalOutput.textContent = card.dataset.output;
+    const populateList = (target, value) => {
+      target.replaceChildren(
+        ...(value || "").split("|").filter(Boolean).map((entry) => {
+          const item = document.createElement("li");
+          item.textContent = entry;
+          return item;
+        }),
+      );
+    };
+    populateList(modalDeliverables, card.dataset.deliverables);
+    modalTools.textContent = card.dataset.tools || "Choose tools based on demonstrated proficiency.";
+    populateList(modalChecklist, card.dataset.checklist);
+    modalStatus.textContent = card.dataset.status || "IN DEVELOPMENT";
+    if (card.dataset.preview) {
+      modalPreviewImage.src = card.dataset.preview;
+      modalPreviewImage.alt = card.dataset.previewAlt || `Preview of ${card.dataset.title}`;
+      modalPreviewWrap.hidden = false;
+    } else {
+      modalPreviewImage.removeAttribute("src");
+      modalPreviewImage.alt = "";
+      modalPreviewWrap.hidden = true;
+    }
+    modalResources.replaceChildren(
+      ...(card.dataset.resources || "").split("|").filter(Boolean).map((entry) => {
+        const [label, path] = entry.split("::");
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.textContent = label || "Open project file";
+        link.href = path || "#";
+        if (/^(view|preview|open)\b/i.test(label || "")) {
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.setAttribute("aria-label", `${label} (opens in a new tab)`);
+        } else {
+          link.setAttribute("download", "");
+        }
+        item.appendChild(link);
+        return item;
+      }),
+    );
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");

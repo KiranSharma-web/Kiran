@@ -2571,3 +2571,46 @@ footer {
   font-weight: 700;
   letter-spacing: .08em;
 }
+
+/* Downloadable HR case-study work samples */
+.modal-resources {
+  display: grid;
+  gap: 8px;
+  padding-left: 18px;
+  margin-top: -4px;
+}
+.modal-resources a {
+  color: #31465a;
+  text-decoration: underline;
+  text-decoration-color: #aab5a6;
+  text-underline-offset: 3px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.modal-resources a:hover,
+.modal-resources a:focus-visible {
+  color: #667b5d;
+}
+.modal-resources a:focus-visible {
+  outline: 2px solid #74866f;
+  outline-offset: 3px;
+}
+
+
+/* Case-study preview shown inside the existing project details modal */
+.modal-preview {
+  margin: 18px 0 20px;
+}
+.modal-preview[hidden] {
+  display: none;
+}
+.modal-preview img {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  object-position: top center;
+  background: #f7f6f2;
+  border: 1px solid #e2e0d8;
+  border-radius: 8px;
+}
